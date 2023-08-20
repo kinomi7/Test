@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'screens/account.dart';
 import 'screens/bookmark.dart';
+import 'screens/home.dart';
+import 'screens/notification.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -27,7 +29,12 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  static const _screens = [BookmarkScreen(), AccountScreen()];
+  static const _screens = [
+    HomeScreen(),
+    BookmarkScreen(),
+    NotificationScreen(),
+    AccountScreen()
+  ];
 
   int _selectedIndex = 0;
 
@@ -45,7 +52,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'ホーム'),
             BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'お気に入り'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.notifications), label: 'お知らせ'),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: 'アカウント')
           ],
           type: BottomNavigationBarType.fixed,
